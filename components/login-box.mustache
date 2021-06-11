@@ -1,0 +1,16 @@
+<form id="codelogin-request" data-nonce="{{request_nonce}}">
+  <p>{{{str.request_form_text}}}</p>
+  <label>
+    <input type="text" required placeholder="{{{str.request_form_label}}}">
+  </label>
+  <p class="error"></p>
+  <input type="submit" value="{{{str.request_form_button_text}}}">
+</form>
+<form id="codelogin-code" data-nonce="{{code_nonce}}" style="display: none">
+  <p>{{{str.code_form_text}}}</p>
+  <label>
+    <input type="number" required placeholder="{{{str.code_form_label}}}" min="10000000" max="99999999">
+  </label>
+  <p class="error"></p>
+  <input type="submit" value="{{{str.code_form_button_text}}}">
+</form>
