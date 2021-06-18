@@ -3,7 +3,7 @@
  * Plugin Name: code-login
  * Plugin URI: http://www.laligad.com
  * Description: Login to website with code sent to email
- * Version: 0.0.1
+ * Version: 0.0.4
  * Author: lld
  * Author URI: http:/www.laligad.com
  * License: GPL2

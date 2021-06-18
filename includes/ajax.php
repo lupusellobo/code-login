@@ -36,10 +36,14 @@ class Code_Ajax {
 
 		$body = Mustache_helper::get_instance()->render_str( get_option('codelogin_email'), [
 			'name' => $user->first_name,
-			'code' => Code_Generator::get_code( 8 ),
+			'code' => $code,
 			'timeout' => number_format( (int) get_option( 'codelogin_timeout' ) / 60, 0 ),
 		], false  );
+
+		do_action( 'code_login_send_code', $user, $code );
 		wp_mail( $user->user_email, get_option( 'codelogin_email_subject' ), $body, [ 'Content-Type: text/html; charset=UTF-8' ] );
+
+
 
 		wp_send_json( [ ], 200 );
 
@@ -53,7 +57,7 @@ class Code_Ajax {
 
 		if ( !$transient ) wp_send_json( [ 'error' => get_option( 'codelogin_code_error' ) ], 404 );
 
-		delete_transient( $_REQUEST['value'] );
+//		delete_transient( $_REQUEST['value'] );
 
 		$user = get_user_by( 'ID', $transient );
 		wp_set_current_user( $user->ID, $user->user_login );
